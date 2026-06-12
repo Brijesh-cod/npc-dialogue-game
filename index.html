@@ -3,88 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NPC Dialogue Game</title>
+    <title>NPC Dialogue Game: AI Talk</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="pixelated">
-    <div class="game-container">
-        <!-- NPC Display -->
-        <div class="npc-section">
+    <main class="game-container">
+        <header class="hero">
             <div class="npc-portrait">
                 <div class="avatar-pixel" id="avatar" aria-hidden="true"></div>
             </div>
-            <div class="npc-info">
-                <h2 id="npcName">Aldric the Mage</h2>
-                <div class="mood-badge" id="moodBadge">Neutral</div>
+            <div class="hero-copy">
+                <p class="eyebrow">AI roleplay chat</p>
+                <h1 id="npcName">Aldric the Mage</h1>
                 <p id="npcTitle">Court Wizard</p>
+                <div class="mood-badge" id="moodBadge">Neutral</div>
+                <p class="status-line" id="modelStatus">Loading AI model...</p>
             </div>
-        </div>
+        </header>
 
-        <!-- Dialogue Display -->
-        <div class="dialogue-section">
-            <div class="dialogue-box" id="dialogueBox">
-                <p id="dialogueText">Greetings, traveler. I haven't seen you around this village before. Are you passing through, or looking for work?</p>
+        <section class="chat-panel" aria-label="NPC conversation">
+            <div class="chat-log" id="chatLog"></div>
+            <div class="chat-hint" id="chatHint">
+                Speak to the NPC. The model will answer in character and remember the conversation.
             </div>
-            <div class="emotion-indicator" id="emotionIndicator">
-                <span>Mood: <strong id="moodText">Neutral</strong></span>
-                <span>Trust: <strong id="trustText">0%</strong></span>
+        </section>
+
+        <section class="control-panel">
+            <div class="npc-switcher" aria-label="Choose an NPC">
+                <button class="ghost-button active" data-npc="aldric">Aldric</button>
+                <button class="ghost-button" data-npc="elena">Elena</button>
+                <button class="ghost-button" data-npc="marcus">Marcus</button>
+                <button class="ghost-button" data-npc="lyra">Lyra</button>
             </div>
-        </div>
 
-        <!-- Memory & State Display -->
-        <div class="state-section">
-            <details>
-                <summary>Character Memory</summary>
-                <div id="memoryList" class="memory-list">
-                    <p><em>No memories yet...</em></p>
-                </div>
-            </details>
-            <details>
-                <summary>Quest Log</summary>
-                <div id="questLog" class="quest-list">
-                    <p><em>No quests yet...</em></p>
-                </div>
-            </details>
-            <details>
-                <summary>Inventory</summary>
-                <div id="inventory" class="inventory-list">
-                    <p><em>Empty</em></p>
-                </div>
-            </details>
-        </div>
+            <div class="quick-actions" aria-label="Quick prompts">
+                <button class="action-button" data-prompt="Tell me about yourself.">About you</button>
+                <button class="action-button" data-prompt="What do you want from me?">Goals</button>
+                <button class="action-button" data-prompt="Do you have a quest for me?">Quest</button>
+                <button class="action-button" data-prompt="What do you remember about me?">Memory</button>
+            </div>
+        </section>
 
-        <!-- Dialogue Options -->
-        <div class="options-section" id="optionsSection">
-            <!-- Dynamically populated -->
-        </div>
-
-        <!-- Player Input -->
-        <div class="input-section">
-            <input 
-                type="text" 
-                id="playerInput" 
-                placeholder="Say something (or type a custom dialogue)"
-                @keyup.enter="sendMessage"
+        <section class="input-section">
+            <input
+                type="text"
+                id="playerInput"
+                placeholder="Say something to the NPC..."
+                autocomplete="off"
             >
-            <button onclick="sendMessage()">Send</button>
-        </div>
+            <button id="sendButton" type="button">Talk</button>
+        </section>
 
-        <!-- Debug Panel -->
-        <div class="debug-panel">
+        <section class="state-section">
+            <details open>
+                <summary>Character Memory</summary>
+                <div id="memoryList" class="memory-list"></div>
+            </details>
+            <details>
+                <summary>Trust & Mood</summary>
+                <div id="statusList" class="quest-list"></div>
+            </details>
+        </section>
+
+        <section class="debug-panel">
             <details>
                 <summary>Debug Info</summary>
-                <div class="debug-controls">
-                    <button onclick="switchNPC('aldric')">Aldric</button>
-                    <button onclick="switchNPC('elena')">Elena</button>
-                    <button onclick="switchNPC('marcus')">Marcus</button>
-                    <button onclick="switchNPC('lyra')">Lyra</button>
-                </div>
                 <pre id="debugInfo"></pre>
-                <button onclick="resetGame()">Reset Game</button>
             </details>
-        </div>
+        </section>
     </div>
 
-    <!-- JavaScript removed for pixelated static prototype -->
+    <script type="module" src="game.js"></script>
 </body>
 </html>

@@ -1,66 +1,40 @@
-# NPC Dialogue Game
+# NPC Dialogue Game: AI Talk
 
-An interactive role-playing game where you engage in realistic conversations with NPCs. The project now includes a retro-styled browser prototype and a Python CLI version, both centered on personality-driven dialogue, memory, trust, and branching interactions.
+A browser-based NPC conversation game with a retro pixel look and an in-browser AI model for dialogue.
 
-## Features
+## What It Does
 
-### Browser Prototype
-- Retro pixel-art UI with a static HTML/CSS presentation
-- Branching dialogue concepts and inventory/trust framing
-- GitHub Pages friendly structure with `index.html` at the repo root
+- Lets you talk to multiple NPCs in character
+- Uses a downloadable AI text model in the browser
+- Keeps a short conversation memory for each NPC
+- Tracks simple trust and mood values
+- Works as a static GitHub Pages site
 
-### Python CLI Version
-- Menu-driven conversation flow
-- NPC mood and trust tracking
-- Character memory and quest support
-- Inventory item trading
-- Multiple NPCs with distinct personalities
+## How to Use It
 
-## How to Play
+1. Open `index.html` in a browser.
+2. Wait for the AI model to load.
+3. Type a message and press Talk.
+4. Switch NPCs with the character buttons.
 
-### Browser Version
-1. Open `index.html` in your browser.
-2. Read the NPC dialogue and inspect the retro UI.
-3. Use GitHub Pages to publish the root site.
+## AI Model
 
-### Python Version
-1. Run `python-game/main.py`.
-2. Choose a dialogue option from the menu.
-3. Offer items, inspect memory, or switch NPCs.
-4. Keep building trust through your choices.
-
-## NPC Characters
-
-- Aldric the Mage
-- Elena the Ranger
-- Marcus the Merchant
-- Lyra the Bard
-
-Each NPC has a different tone, trust response, and memory of your actions.
+The page loads a small Transformers.js text-generation model from a CDN.
+The first visit may take a little while while the model downloads.
+If the model cannot load, the game falls back to local dialogue so the page still works.
 
 ## Deployment
 
-For GitHub Pages, keep these files in the repository root:
+For GitHub Pages, keep these files at the repository root:
+
 - `index.html`
 - `style.css`
+- `game.js`
 
-Then enable Pages in repository settings or use the included GitHub Actions workflow.
-
-## Python CLI
-
-The Python version lives in `python-game/` and includes:
-- `main.py`
-- `game.py`
-- `npc.py`
-
-Run it with:
-
-```bash
-python3 python-game/main.py
-```
+Then enable Pages from the `main` branch or deploy with the included workflow.
 
 ## Notes
 
-- The browser version is now a static retro prototype.
-- The JavaScript files were intentionally removed in this branch.
-- Temporary Python cache files are ignored so the repo stays clean.
+- The old Python CLI version has been removed.
+- The game now runs entirely in the browser.
+- If you want to host your own model endpoint later, `game.js` is the place to swap in a different provider.
