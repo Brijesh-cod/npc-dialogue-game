@@ -9,3 +9,5 @@ build/
 .idea/
 .vscode/
 *.log
+python-game/__pycache__/
+python-game/tmp_fix.py
